@@ -14,11 +14,12 @@
                         $port = 4000;
 
                         if (isset($_POST['btnSend'])) {
-                            $msg = $_REQUEST['txtMessage'];
+                            $send_msg = $_REQUEST['txtMessage'];
                             $sock = socket_create(AF_INET, SOCK_STREAM, 0);
                             socket_connect($sock, $host, $port);
 
-                            socket_write($sock, $msg, strlen($msg));
+                            $send_msg = "qwertyuiop";
+                            socket_write($sock, $send_msg, strlen($send_msg));
 
                             $reply = socket_read($sock, 1024);
                             $reply = trim($reply);
