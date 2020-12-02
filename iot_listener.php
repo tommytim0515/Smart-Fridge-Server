@@ -31,6 +31,12 @@
         preg_match_all('!\d+!', $msg, $matches);
         $temp = $matches[0][0];
         echo "$temp\n\n";
+
+        $line = new communication_test();
+        echo "Enter Reply:\t";
+        $reply = $line->readline();
+
+        socket_write($accept, $reply, strlen($reply)) or die ("Could not write output\n");
     } while(true);
 
     socket_close($accept, $sock); 
